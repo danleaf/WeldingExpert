@@ -7,40 +7,15 @@ using System.Data.Entity;
 
 namespace WeldingExpert.Models
 {
-    public enum UserRoleEnum
+    public enum UserRole
     {
         Worker,
         Engineer,
         SeniorEngineer,
-        Admin,
-        End
+        Admin
     }
 
-    public class UserRole
-    {
-        public int Value { get; set; }
-        public string Name { get; set; }
-
-        public UserRole(int val)
-        {
-            Value = val;
-            Name = ((UserRoleEnum)val).ToString();
-        }
-
-        public static SelectList GetSelectList()
-        {
-            List<UserRole> levels = new List<UserRole>();
-
-            for (int level = 0; level < (int)UserRoleEnum.End; level++)
-            {
-                levels.Add(new UserRole(level));
-            }
-
-            return new SelectList(levels, "Value", "Name");
-        }
-    }
-
-    public enum WelderLevelEnum
+    public enum WelderLevel
     {
         初级焊工,
         中级焊工,
@@ -50,66 +25,47 @@ namespace WeldingExpert.Models
         高级焊师,
         初级焊接专家,
         中级焊接专家,
-        高级焊接专家,
-        End,
+        高级焊接专家
     }
 
-    public class WelderLevel
+    public enum MechanLevel
     {
-        [Key]
-        public int Value { get; set; }
-        public string Name { get; set; }
-
-        public WelderLevel(int val)
-        {
-            Value = val;
-            Name = ((WelderLevelEnum)val).ToString();
-        }
-
-        public static List<WelderLevel> GetAllLevels()
-        {
-            List<WelderLevel> levels = new List<WelderLevel>();
-
-            for (int level = 0; level < (int)WelderLevelEnum.End; level++)
-            {
-                levels.Add(new WelderLevel(level));
-            }
-
-            WelderLevelEnum e = WelderLevelEnum.End;
-
-            e.Equals(1);
-
-            return levels;
-        }
+        手动,
+        机械,
+        半自动,
+        自动
     }
 
-    public class Enum<T> where T : struct
+    public class Enum<T>
     {
-        public int Value { get; set; }
+        public int Index { get; set; }
         public string Name { get; set; }
 
         public Enum(int val)
         {
-            Value = val;
+            Index = val;
             Name = Enum.GetName(typeof(T), val);
         }
 
-        public static List<Enum<T>> GetAllOptions()
+        public static List<Enum<T>> GetValues()
         {
-            if (typeof(T).IsEnum)
-            {
-                Array arr = System.Enum.GetValues(typeof(T));
-                List<Enum<T>> opts = new List<Enum<T>>();
+            if (!typeof(T).IsEnum)
+                throw new Exception("泛型参数类型不是枚举");
 
-                for (int i = 0; i < arr.Length - 1; i++)
-                {
-                    opts.Add(new Enum<T>(arr[i]));
-                }
-                return opts;
+            Array arr = System.Enum.GetValues(typeof(T));
+            List<Enum<T>> opts = new List<Enum<T>>();
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                opts.Add(new Enum<T>(i));
             }
 
+            return opts;
+        }
 
-            return null;
+        public static SelectList GetSelectList()
+        {
+            return new SelectList(GetValues(), "Index", "Name");
         }
     }
 

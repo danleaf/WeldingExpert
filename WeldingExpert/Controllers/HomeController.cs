@@ -59,7 +59,7 @@ namespace WeldingExpert.Controllers
                 var admin = from usr in db.Users where usr.UserName == "admin" select usr;
                 if (admin.Count() > 0)
                     db.Users.Remove(admin.First());
-                db.Users.Add(new User() { UserName = "admin", Password = "admin", Role = (int)UserRoleEnum.Admin, RealName = "叶丹", WorkerID = 1 });
+                db.Users.Add(new User() { UserName = "admin", Password = "admin", Role = (int)UserRole.Admin, RealName = "叶丹", WorkerID = 1 });
                 db.SaveChanges();
             }
             return RedirectToAction("Index", "Home");

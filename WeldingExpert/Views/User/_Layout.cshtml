@@ -14,8 +14,8 @@
         var usrrole = HttpContext.Current.Session["usr-role"];
         if (usrrole != null)
         {
-          UserRoleEnum role = (UserRoleEnum)(int)usrrole;
-          if (role == UserRoleEnum.Admin)
+          UserRole role = (UserRole)(int)usrrole;
+          if (role == UserRole.Admin)
           {
             <li>@Html.ActionLink("所有用户", "All")</li>
             <li>@Html.ActionLink("创建新用户", "Create")</li>

@@ -1,5 +1,6 @@
 ﻿@model WeldingExpert.Models.CreateUserOkModel
 @using WeldingExpert.Common;         
+@using WeldingExpert.Models
 @{
   Layout = "~/Views/User/_Layout.cshtml";
 }
@@ -27,7 +28,7 @@
           @Html.DisplayFor(item => item.UserName)
       </td>
       <td>
-          @Html.DisplayFor(item => item.Role.ToUserRole().Name)
+          @Html.DisplayFor(item => item.Role.ToEnumClass<UserRole>().Name)
       </td>
       <td>
           @Html.DisplayFor(item => item.RealName)

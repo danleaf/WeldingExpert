@@ -29,7 +29,7 @@ namespace WeldingExpert.Models
         protected override void Seed(DbContext context)
         {
             context.Welders.Add(new Welder { SocialID = "123456789012345677", Name = "Joe Tang", BirthYear = 1990, Level = 5 });
-            context.Users.Add(new User { UserName = "admin", Password = "admin", Role = (int)UserRoleEnum.Admin, RealName = "叶丹", WorkerID = 1 });
+            context.Users.Add(new User { UserName = "admin", Password = "admin", Role = (int)UserRole.Admin, RealName = "叶丹", WorkerID = 1 });
             context.WeldingMaterials.Add(new WeldingMaterial() { Type = "E316L", Standard = 2.0, TransNo = "15-S-16", ReviewReportNo = "R101" });
 
             var pmc1 = new ParentMetalClass { Type = "Fe-1", Group = "Fe-1-1", Grade = "Q345R" };

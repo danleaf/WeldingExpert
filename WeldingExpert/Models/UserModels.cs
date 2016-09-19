@@ -17,7 +17,7 @@ namespace WeldingExpert.Models
         public string Password { get; set; }
 
         [Display(Name = "用户角色")]
-        public int Role { get; set; }
+        public int Role { get; set; }   //enum UserRole
 
         [Display(Name = "真实姓名")]
         public string RealName { get; set; }
@@ -50,7 +50,7 @@ namespace WeldingExpert.Models
 
         [Required]
         [Display(Name = "用户角色")]
-        public int Role { get; set; }
+        public int Role { get; set; }   //enum UserRole
 
         [Required]
         [Display(Name = "真实姓名")]
@@ -78,7 +78,7 @@ namespace WeldingExpert.Models
 
         [Required]
         [Display(Name = "用户角色")]
-        public int Role { get; set; }
+        public int Role { get; set; }   //enum UserRole
 
         [Required]
         [Display(Name = "真实姓名")]
@@ -96,7 +96,7 @@ namespace WeldingExpert.Models
 
         [Required]
         [Display(Name = "用户角色")]
-        public int Role { get; set; }
+        public int Role { get; set; }   //enum UserRole
 
         [Required]
         [Display(Name = "真实姓名")]

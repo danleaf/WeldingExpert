@@ -8,14 +8,9 @@ namespace WeldingExpert.Common
 {
     public static class IntegerExends
     {
-        public static WelderLevel ToWelderLevel(this int val)
+        public static Enum<T> ToEnumClass<T>(this int val)
         {
-            return new WelderLevel(val);
-        }
-
-        public static UserRole ToUserRole(this int val)
-        {
-            return new UserRole(val);
+            return new Enum<T>(val);
         }
     }
 }

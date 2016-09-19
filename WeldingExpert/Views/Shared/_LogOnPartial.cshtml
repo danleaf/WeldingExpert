@@ -8,7 +8,7 @@
     var usrrole = contex.Session["usr-role"];
     if (usrname != null && usrrole != null && usrname.Trim() != "")
     {
-      UserRoleEnum role = (UserRoleEnum)(int)usrrole;
+      UserRole role = (UserRole)(int)usrrole;
         <h4 id="loginmsg">欢迎 <strong> @role.ToString()  @usrname</strong>!
         [ @Html.ActionLink("注销", "LogOff", "Home") ]</h4>
     }

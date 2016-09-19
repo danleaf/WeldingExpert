@@ -35,7 +35,7 @@
             @Html.DisplayFor(modelItem => item.BirthYear)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Level.ToWelderLevel().Name)
+            @Html.DisplayFor(modelItem => item.Level.ToEnumClass<WelderLevel>().Name)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.SocialID }) |

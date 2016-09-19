@@ -34,7 +34,7 @@ namespace WeldingExpert.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.Roles = UserRole.GetSelectList();
+            ViewBag.Roles = Enum<UserRole>.GetSelectList();
             return View();
         }
 
@@ -55,19 +55,19 @@ namespace WeldingExpert.Controllers
                 }
             }
 
-            ViewBag.Roles = UserRole.GetSelectList();
+            ViewBag.Roles = Enum<UserRole>.GetSelectList(); 
             return View();
         }
 
         public ActionResult CreatedOK(CreateUserOkModel usr)
         {
-            ViewBag.Roles = UserRole.GetSelectList();
+            ViewBag.Roles = Enum<UserRole>.GetSelectList(); 
             return View(usr);
         }
 
         public ActionResult DeletedOK(DeleteUserModel usr)
         {
-            ViewBag.Roles = UserRole.GetSelectList();
+            ViewBag.Roles = Enum<UserRole>.GetSelectList(); 
             return View(usr);
         }
 

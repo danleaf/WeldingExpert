@@ -23,9 +23,7 @@ namespace WeldingExpert.Models
         public List<WeldingWay> WeldingWays { get; set; }
 
         [Display(Name = "机械化程度")]
-        public int MechanLevel { get; set; }    // MechanLevel
-
-
+        public int MechanLevel { get; set; }    // enum MechanLevel
 
         public int Joint { get; set; }
     }
@@ -39,3 +37,4 @@ namespace WeldingExpert.Models
         public List<WPS> WPSs { get; set; }
     }
 }
+

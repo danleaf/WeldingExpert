@@ -34,7 +34,7 @@ namespace WeldingExpert.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.WelderLevels = new SelectList(Enum<WelderLevelEnum>.GetAllOptions(), "Value", "Name");
+            ViewBag.WelderLevels = Enum<WelderLevel>.GetSelectList();
 
             List<int> years = new List<int>();
 
@@ -60,7 +60,7 @@ namespace WeldingExpert.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.WelderLevels = new SelectList(WelderLevel.GetAllLevels(), "Value", "Name");
+            ViewBag.WelderLevels = Enum<WelderLevel>.GetSelectList();
 
             List<int> years = new List<int>();
 

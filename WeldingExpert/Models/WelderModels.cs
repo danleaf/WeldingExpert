@@ -13,9 +13,9 @@ namespace WeldingExpert.Models
     {
         [Key]
         [Required]
-        //[SocialID]
+        [SocialID]
         [Display(Name = "身份证号")]
-        //[StringLength(18, ErrorMessage = "{0}是18个字符", MinimumLength = 18)]
+        [StringLength(18, ErrorMessage = "{0}是18个字符", MinimumLength = 18)]
         public string SocialID { get; set; }
 
         [Required]
@@ -29,6 +29,6 @@ namespace WeldingExpert.Models
 
         [Required]
         [Display(Name = "等级")]
-        public int Level { get; set; }  // WelderLevelEnum
+        public int Level { get; set; }  // enum WelderLevel
     }
 }

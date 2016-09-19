@@ -1,7 +1,8 @@
 ﻿@model WeldingExpert.Models.DeleteUserModel
 @using WeldingExpert.Common;
+@using WeldingExpert.Models
 @{
-  Layout = "~/Views/User/_Layout.cshtml";
+    Layout = "~/Views/User/_Layout.cshtml";
 }
 
 <h3>确定要删除当前用户吗？</h3>
@@ -27,7 +28,7 @@
           @Html.DisplayFor(item => item.UserName)
       </td>
       <td>
-          @Html.DisplayFor(item => item.Role.ToUserRole().Name)
+          @Html.DisplayFor(item => item.Role.ToEnumClass<UserRole>().Name)
       </td>
       <td>
           @Html.DisplayFor(item => item.RealName)
@@ -37,7 +38,8 @@
       </td>
   </tr>
 </table>
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     <p>
         <input type="submit" value="删除" />
     </p>

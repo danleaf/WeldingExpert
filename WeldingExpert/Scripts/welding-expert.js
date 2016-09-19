@@ -41,7 +41,9 @@ $.validator.addMethod("agevalidate", function (value, element, params) {
 
 //Create.cshtml
 
-$(document).ready(function () {
+//$(function () {}) 是 $(document).ready(function () {})的简写  
+
+$(function () {
     $("#Age").change(function (event) {
         $("#Level").empty();
         if (parseInt($("#Age").val()) < 30) {
@@ -57,7 +59,7 @@ $(document).ready(function () {
     });
 });
 
-$(document).ready(function () {
+$(function () {
     $("#menu_quality").mouseover(function (event) {
         $("#menu").empty();
         $("#menu").append("<li><a href='/Home/About'>质量管理</a></li>");
@@ -93,4 +95,52 @@ $(document).ready(function () {
         $("#menu").empty();
         $("#menu").append("<li><a href='/User/Index'>进度控制</a></li>");
     });
+});
+
+$.fn.lightbox = function () {
+
+    function removeLightBox() {
+        $('.lightBoxMask').fadeTo(300, 0, function () {
+            $(this).remove();
+        });
+        $('.lightBox').fadeTo(100, 0, function () {
+            $(this).remove();
+        });
+    }
+
+    $(this).click(function () {
+        $(this).attr('href', 'javascript:;');
+
+        var img = new Image();
+        img.src = $(this).children('img').attr('src');
+
+        $('body').append('<div class="lightBoxMask" style="width:' + $(window).width() + 'px;height:' + $(window).height() + 'px;"></div>')
+                     .append('<div class="lightBox" style="width:' + img.width + 'px;height:' + img.height + 'px;"><div class="lightBoxContainer" style="width:' + img.width + 'px;height:' + img.height + 'px;"><img src="' + img.src + '" /></div><div class="lightBoxClose">关闭</div></div>');
+
+
+        $('.lightBox').css({
+            opacity: 0,
+            left: ($(window).width() - $('.lightBox').width()) / 2,
+            top: ($(window).height() - $('.lightBox').height()) / 2
+        }).fadeTo(1000, 1);
+
+        $('.lightBoxClose').click(removeLightBox);
+        $('.lightBoxMask').css({ opacity: 0 }).fadeTo(500, 0.8).click(removeLightBox);
+    });
+
+    $(window).resize(function () {
+        $('.lightBoxMask').css({
+            width: $(window).width(),
+            height: $(window).height()
+        });
+
+        $('.lightBox').css({
+            left: ($(window).width() - $('.lightBox').width()) / 2,
+            top: ($(window).height() - $('.lightBox').height()) / 2
+        });
+    });
+};
+
+$(function () {
+    $('.test a').lightbox();
 });
