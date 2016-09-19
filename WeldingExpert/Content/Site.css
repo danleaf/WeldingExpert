@@ -1,0 +1,94 @@
+﻿.list {list-style: none;}
+
+#loginmsg
+{
+    text-align:right;
+}
+
+ul#mainmenu
+{
+    padding: 0 0 2px;
+    position: relative;
+    margin: 0;
+    text-align: left;
+}
+
+ul#mainmenu li
+{
+    display: inline;
+    list-style: none;
+    cursor: pointer;
+    color: blue;
+}
+
+ul#mainmenu li:hover
+{
+    display: inline;
+    list-style: none;
+    cursor: pointer;
+    color: red;
+}
+
+ul#menu
+{
+    border-bottom: 3px #5C87B2 solid;
+    padding: 0 0 2px;
+    position: relative;
+    margin: 0;
+    text-align: left;
+}
+
+ul#menu li
+{
+    display: inline;
+    list-style: none;
+}
+
+ul#option
+{
+    list-style: none;
+}
+
+a:link
+{
+    color: blue;
+    text-decoration: none;
+}
+a:visited
+{
+    color: blue;
+}
+a:hover
+{
+    color: red;
+    text-decoration: none;
+}
+
+table
+{
+    border: 1px solid red;
+}
+
+th
+{
+    border: 1px solid red;
+}
+
+tr
+{
+    border: 1px solid red;
+}
+
+td
+{
+    border: 1px solid red;
+}
+    
+
+.aaaa
+{
+}
+
+.asasas
+{
+}

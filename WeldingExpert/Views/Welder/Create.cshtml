@@ -1,0 +1,54 @@
+﻿@model WeldingExpert.Models.Welder
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Welder</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SocialID)（总共18个字符，X请大写）
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SocialID)
+            @Html.ValidationMessageFor(model => model.SocialID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BirthYear)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(m => m.BirthYear, ViewBag.Years as SelectList)
+            @Html.ValidationMessageFor(model => model.BirthYear)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Level)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(m => m.Level, ViewBag.WelderLevels as SelectList)
+            @Html.ValidationMessageFor(model => model.Level)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

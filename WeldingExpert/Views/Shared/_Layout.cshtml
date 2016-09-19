@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>焊接专家系统</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.5.1.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/welding-expert.js")" type="text/javascript"></script>
+</head>
+<body>
+    <div class="page">
+        <div id="header">
+            <div id="logindisplay">
+                @Html.Partial("_LogOnPartial")
+            </div>
+            <div>
+                <ul id="mainmenu">
+                    <li id="menu_task">产品焊接工艺任务</li>
+                    <li id="menu_welder">焊工管理</li>
+                    <li id="menu_material">材料管理</li>
+                    <li id="menu_tech">焊接工艺技术</li>
+                    <li id="menu_progress">进度控制</li>
+                    <li id="menu_quality">焊接质量</li>
+                    <li id="menu_setting">系统设置</li>
+                </ul>
+              <div>
+                <ul class="list"><li></li></ul>
+              </div>
+              <div>
+                <ul id="menu">
+                @switch ((string)ViewBag.CurrentController)
+                {
+                  case "User":
+                     <li>@Html.ActionLink("用户管理", "Index", "User")</li>
+                    break;
+                  case "ParentMetal":
+                  case "WeldingMaterial":
+                     <li>@Html.ActionLink("母材管理", "Index", "ParentMetal")</li>
+                     <li>@Html.ActionLink("焊材管理", "Index", "WeldingMaterial")</li>
+                    break;
+                  default:
+                     <li>@Html.ActionLink("质量管理", "About", "Home")</li>
+                    break;
+                }
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div id="main">
+            @RenderBody()
+        </div>
+        <div id="footer">
+        </div>
+    </div>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

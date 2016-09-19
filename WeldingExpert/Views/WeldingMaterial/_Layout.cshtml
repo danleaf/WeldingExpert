@@ -1,0 +1,21 @@
+﻿@using WeldingExpert.Models;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>@ViewBag.Title</h3>
+
+<table>
+  <tr>   
+    <td valign="top">
+      <ul id="option">
+        <li>@Html.ActionLink("所有焊材", "Index")</li>
+      </ul>
+    </td>  
+    <td valign="top">
+      <div>
+        @RenderBody()
+      </div>
+    </td>  
+  </tr>
+</table>

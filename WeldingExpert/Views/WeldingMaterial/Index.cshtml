@@ -1,0 +1,43 @@
+﻿@model IEnumerable<WeldingExpert.Models.WeldingMaterial>
+@using WeldingExpert.Common;           
+@{
+  Layout = "~/Views/WeldingMaterial/_Layout.cshtml";
+}
+<table>
+    <tr>
+        <th>
+            名称
+        </th>
+        <th>
+            用户角色
+        </th>
+        <th>
+            真实姓名
+        </th>
+        <th>
+            工号
+        </th>
+        <th></th>
+    </tr>
+
+  @foreach (var item in Model)
+  {
+    <tr>
+      <td>
+          @Html.DisplayFor(modelItem => item.Type)
+      </td>
+      <td>
+          @Html.DisplayFor(modelItem => item.Standard)
+      </td>
+      <td>
+          @Html.DisplayFor(modelItem => item.TransNo)
+      </td>
+      <td>
+          @Html.DisplayFor(modelItem => item.ReviewReportNo)
+      </td>
+      <td>
+          @Html.ActionLink("删除", "Delete", new { usrname = item.ID })
+      </td>
+  </tr>
+  }
+</table>
