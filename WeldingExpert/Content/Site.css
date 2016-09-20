@@ -25,6 +25,12 @@ a:hover
 	text-decoration: none;
 }
 
+#main
+{
+    position: absolute;
+    top: 75px;
+}
+	
 
 img
 {
@@ -47,6 +53,7 @@ ul#mainmenu
     padding: 0 0 2px;
     position: relative;
     margin: 0;
+    padding: 0 0 2px;
     text-align: left;
 }
 
@@ -66,19 +73,19 @@ ul#mainmenu li:hover
     color: #065BC2;
 }
 
-ul#menu
+#submenu ul
 {
-    border-bottom: 3px #5C87B2 solid;
     padding: 0 0 2px;
     position: relative;
     margin: 0;
     text-align: left;
 }
 
-ul#menu li
+#submenu li
 {
     display: inline;
     list-style: none;
+    padding: 0 2px 2px 2px;
 }
 
 ul#option

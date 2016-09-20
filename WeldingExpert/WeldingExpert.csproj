@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Attributes\Validations.cs" />
     <Compile Include="Common\IntegerExends.cs" />
+    <Compile Include="Common\Methods.cs" />
     <Compile Include="Controllers\ParentMetalController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\WPSController.cs" />

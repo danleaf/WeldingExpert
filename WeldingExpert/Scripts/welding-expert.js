@@ -6,7 +6,7 @@ $.validator.unobtrusive.adapters.addBool("socialidvalidate");
 $.validator.addMethod("socialidvalidate", function (value, element, params) 
 {
     var w = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2];
-    var sig = ['1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'];
+    var sig = ["1", "0", "X", "9", "8", "7", "6", "5", "4", "3", "2"];
 
     if (value.length != 18) {
         return false;
@@ -14,7 +14,7 @@ $.validator.addMethod("socialidvalidate", function (value, element, params)
 
     var sum = 0;
     for (var i = 0; i < 17; i++) {
-        sum += (value[i] - '0') * w[i];
+        sum += (value[i] - "0") * w[i];
     }
 
     sum %= 11;
@@ -64,59 +64,110 @@ $(function ()
 });
 
 $(function () {
-    $("#menu_quality").mouseover(function (event) 
-    {
-        $("#menu").empty();
-        $("#menu").append("<li><a href='/Home/About'>质量管理</a></li>");
+    $("#submenu").mouseleave(function (event) {
+        $(this).hide();
     });
 
-    $("#menu_setting").mouseover(function (event)
-    {
-        $("#menu").empty();
-        $("#menu").append("<li><a href='/User/Index'>用户管理</a></li>");
+    $("#header").mouseleave(function (event) {
+        $("#submenu").hide();
     });
 
-    $("#menu_material").mouseover(function (event)
-    {
-        $("#menu").empty();
-        $("#menu").append("<li><a href='/ParentMetal/Index'>母材管理</a></li>");
-        $("#menu").append("<li><a href='/WeldingMaterial/Index'>焊材管理</a></li>");
+    var subMenuWidthMap = new Array();
+    var subMenuObjectMap = new Array();
+
+    $("#submenu ul").each(function () {
+        var width = 0;
+        $("li", this).each(function () {
+            width += $(this).outerWidth();
+        });
+        $(this).css("width", width + 10);
+        subMenuWidthMap[$(this).attr("id")] = width;
+        subMenuObjectMap[$(this).attr("id")] = $(this);
     });
 
-    $("#menu_task").mouseover(function (event) 
-    {
-        $("#menu").empty();
-        $("#menu").append("<li><a href='/User/Index'>产品焊接工艺任务</a></li>");
+
+    $("#submenu").hide();
+
+    $("#mainmenu li").mouseover(function (event) {
+        var menu, width;
+
+        for (var key in subMenuObjectMap) {
+            if ("show_" + key == $(this).attr("id")) {
+                menu = subMenuObjectMap[key];
+                width = subMenuWidthMap[key];
+            }
+            else {
+                subMenuObjectMap[key].hide();
+            }
+        }
+
+        if (menu) {
+            var totalWidth = $("#header").width();
+            var left = $(this).position().left + $(this).width() / 2 - width / 2;
+
+            if (left + width > totalWidth) {
+                left -= left + width - totalWidth;
+            }
+
+            if (left < 0) {
+                left = 0;
+            }
+
+            menu.css("padding", "0 " + left + "px 2px");
+            menu.show();
+        }
+
+        $("#submenu").show();
     });
 
-    $("#menu_welder").mouseover(function (event) 
-    {
-        $("#menu").empty();
-        $("#menu").append("<li><a href='/User/Index'>焊工管理</a></li>");
+    /*
+    $("#menu_quality").mouseover(function (event) {
+    $("#submenu").empty();
+    $("#submenu").append("<li><a href="/Home/About">质量管理</a></li>");
     });
 
-    $("#menu_tech").mouseover(function (event) 
-    {
-        $("#menu").empty();
-        $("#menu").append("<li><a href='/User/Index'>焊接工艺技术</a></li>");
+    $("#menu_setting").mouseover(function (event) {
+    $("#submenu").show();
+    $("#submenu").empty();
+    $("#submenu").append("<li><a href="/User/Index">用户管理</a></li>");
     });
 
-    $("#menu_progress").mouseover(function (event) 
-    {
-        $("#menu").empty();
-        $("#menu").append("<li><a href='/User/Index'>进度控制</a></li>");
+    $("#menu_material").mouseover(function (event) {
+    $("#submenu").empty();
+    $("#submenu").append("<li><a href="/ParentMetal/Index">母材管理</a></li>");
+    $("#submenu").append("<li><a href="/WeldingMaterial/Index">焊材管理</a></li>");
     });
+
+    $("#menu_task").mouseover(function (event) {
+    $("#submenu").empty();
+    $("#submenu").append("<li><a href="/User/Index">产品焊接工艺任务</a></li>");
+    });
+
+    $("#menu_welder").mouseover(function (event) {
+    $("#submenu").empty();
+    $("#submenu").append("<li><a href="/User/Index">焊工管理</a></li>");
+    });
+
+    $("#menu_tech").mouseover(function (event) {
+    $("#submenu").empty();
+    $("#submenu").append("<li><a href="/User/Index">焊接工艺技术</a></li>");
+    });
+
+    $("#menu_progress").mouseover(function (event) {
+    $("#submenu").empty();
+    $("#submenu").append("<li><a href="/User/Index">进度控制</a></li>");
+    });*/
 });
 
 function showbox() {
-    $('#box').show();
+    $("#box").show();
 }
 
 $(function () {
-    $('body').append('<div id="box" style="display:none"><div id="boxbg"></div><div id="boxfg"><div id="boxcontent"></div><div id="boxclose">关闭</div></div></div>');
-    $('#boxclose').click(function () {
-        $('#boxcontent').empty();
-        $('#box').css('display', 'none');
+    $("body").append("<div id='box' style='display:none'><div id='boxbg'></div><div id='boxfg'><div id='boxcontent'></div><div id='boxclose'>关闭</div></div></div>");
+    $("#boxclose").click(function () {
+        $("#boxcontent").empty();
+        $("#box").css("display", "none");
     });
 });
 
