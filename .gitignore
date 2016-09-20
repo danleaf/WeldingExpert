@@ -2,3 +2,4 @@
 *.ldf
 /WeldingExpert/bin
 /WeldingExpert/obj
+*.suo

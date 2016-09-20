@@ -40,13 +40,7 @@
     }
     
     <div id="iddelay">
-        @Ajax.ActionLink("Test Ajax", "Delay",
-            new AjaxOptions() { UpdateTargetId = "iddelay", InsertionMode = InsertionMode.Replace, HttpMethod = "GET" })
-    </div>
-
-    
-    <div class="test">
-       <a href=""><img src="example1/content/marylou.jpg" /></a>
+        @Ajax.ActionLink("查看图片", "ShowPic", new AjaxOptions() { UpdateTargetId = "boxcontent", InsertionMode = InsertionMode.Replace, HttpMethod = "GET", OnComplete="showbox" })
     </div>
 
 </body>

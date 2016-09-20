@@ -65,9 +65,9 @@ namespace WeldingExpert.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult Delay()
+        public ActionResult ShowPic()
         {
-            return PartialView("_LogOnPartial");
+            return PartialView("_ShowPic");
         }        
     }
 }

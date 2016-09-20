@@ -3,8 +3,8 @@
 /// <reference path="jquery.validate.unobtrusive.js" />
 
 $.validator.unobtrusive.adapters.addBool("socialidvalidate");
-$.validator.addMethod("socialidvalidate", function (value, element, params) {
-
+$.validator.addMethod("socialidvalidate", function (value, element, params) 
+{
     var w = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2];
     var sig = ['1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'];
 
@@ -24,7 +24,8 @@ $.validator.addMethod("socialidvalidate", function (value, element, params) {
     return true;
 });
 
-$.validator.unobtrusive.adapters.add("agevalidate", ["min", "max"], function (opt) {
+$.validator.unobtrusive.adapters.add("agevalidate", ["min", "max"], function (opt) 
+{
     opt.rules["agevalidate"] = {
         min: opt.params.min,
         max: opt.params.max
@@ -32,7 +33,8 @@ $.validator.unobtrusive.adapters.add("agevalidate", ["min", "max"], function (op
     opt.messages["agevalidate"] = opt.message;
 });
 
-$.validator.addMethod("agevalidate", function (value, element, params) {
+$.validator.addMethod("agevalidate", function (value, element, params) 
+{
     var age = value;
     var min = params.min;
     var max = params.max;
@@ -43,8 +45,10 @@ $.validator.addMethod("agevalidate", function (value, element, params) {
 
 //$(function () {}) 是 $(document).ready(function () {})的简写  
 
-$(function () {
-    $("#Age").change(function (event) {
+$(function () 
+{
+    $("#Age").change(function (event) 
+    {
         $("#Level").empty();
         if (parseInt($("#Age").val()) < 30) {
             $("#Level").append("<option value='0'>初级焊工</option>");
@@ -60,87 +64,108 @@ $(function () {
 });
 
 $(function () {
-    $("#menu_quality").mouseover(function (event) {
+    $("#menu_quality").mouseover(function (event) 
+    {
         $("#menu").empty();
         $("#menu").append("<li><a href='/Home/About'>质量管理</a></li>");
     });
 
-    $("#menu_setting").mouseover(function (event) {
+    $("#menu_setting").mouseover(function (event)
+    {
         $("#menu").empty();
         $("#menu").append("<li><a href='/User/Index'>用户管理</a></li>");
     });
 
-    $("#menu_material").mouseover(function (event) {
+    $("#menu_material").mouseover(function (event)
+    {
         $("#menu").empty();
         $("#menu").append("<li><a href='/ParentMetal/Index'>母材管理</a></li>");
         $("#menu").append("<li><a href='/WeldingMaterial/Index'>焊材管理</a></li>");
     });
 
-    $("#menu_task").mouseover(function (event) {
+    $("#menu_task").mouseover(function (event) 
+    {
         $("#menu").empty();
         $("#menu").append("<li><a href='/User/Index'>产品焊接工艺任务</a></li>");
     });
 
-    $("#menu_welder").mouseover(function (event) {
+    $("#menu_welder").mouseover(function (event) 
+    {
         $("#menu").empty();
         $("#menu").append("<li><a href='/User/Index'>焊工管理</a></li>");
     });
 
-    $("#menu_tech").mouseover(function (event) {
+    $("#menu_tech").mouseover(function (event) 
+    {
         $("#menu").empty();
         $("#menu").append("<li><a href='/User/Index'>焊接工艺技术</a></li>");
     });
 
-    $("#menu_progress").mouseover(function (event) {
+    $("#menu_progress").mouseover(function (event) 
+    {
         $("#menu").empty();
         $("#menu").append("<li><a href='/User/Index'>进度控制</a></li>");
     });
 });
 
-$.fn.lightbox = function () {
+function showbox() {
+    $('#box').show();
+}
 
+$(function () {
+    $('body').append('<div id="box" style="display:none"><div id="boxbg"></div><div id="boxfg"><div id="boxcontent"></div><div id="boxclose">关闭</div></div></div>');
+    $('#boxclose').click(function () {
+        $('#boxcontent').empty();
+        $('#box').css('display', 'none');
+    });
+});
+
+$.fn.lightbox0 = function () {
     function removeLightBox() {
-        $('.lightBoxMask').fadeTo(300, 0, function () {
+        $('.lightboxmask').fadeTo(1, 0, function () {
             $(this).remove();
         });
-        $('.lightBox').fadeTo(100, 0, function () {
+        $('.lightbox').fadeTo(1, 0, function () {
             $(this).remove();
         });
     }
 
-    $(this).click(function () {
-        $(this).attr('href', 'javascript:;');
+    $(this).click(function (event) {
+        event.preventDefault();
 
         var img = new Image();
-        img.src = $(this).children('img').attr('src');
+        img.onload = (function () {
+            $('body').append('<div class="lightboxmask" style="width:' + $(window).width() + 'px;height:' + $(window).height() + 'px;"></div>')
+                     .append('<div class="lightbox" style="width:' + img.width + 'px;height:' + img.height + 'px;"><div class="lightboxcontainer" style="width:' + img.width + 'px;height:' + img.height + 'px;"><img src="' + img.src + '" /></div><div class="lightboxclose">关闭</div></div>');
 
-        $('body').append('<div class="lightBoxMask" style="width:' + $(window).width() + 'px;height:' + $(window).height() + 'px;"></div>')
-                     .append('<div class="lightBox" style="width:' + img.width + 'px;height:' + img.height + 'px;"><div class="lightBoxContainer" style="width:' + img.width + 'px;height:' + img.height + 'px;"><img src="' + img.src + '" /></div><div class="lightBoxClose">关闭</div></div>');
+            $('.lightbox').css({
+                opacity: 0,
+                left: ($(window).width() - $('.lightbox').width()) / 2,
+                top: ($(window).height() - $('.lightbox').height()) / 2
+            }).fadeTo(1, 1);
 
+            $('.lightboxclose').click(removeLightBox);
+            $('.lightboxmask').css({ opacity: 0 }).fadeTo(1, 0.8).click(removeLightBox);
+        });
 
-        $('.lightBox').css({
-            opacity: 0,
-            left: ($(window).width() - $('.lightBox').width()) / 2,
-            top: ($(window).height() - $('.lightBox').height()) / 2
-        }).fadeTo(1000, 1);
-
-        $('.lightBoxClose').click(removeLightBox);
-        $('.lightBoxMask').css({ opacity: 0 }).fadeTo(500, 0.8).click(removeLightBox);
+        img.src = $(this).attr('href');
     });
 
     $(window).resize(function () {
-        $('.lightBoxMask').css({
+        $('.lightboxmask').css({
             width: $(window).width(),
             height: $(window).height()
         });
 
-        $('.lightBox').css({
-            left: ($(window).width() - $('.lightBox').width()) / 2,
-            top: ($(window).height() - $('.lightBox').height()) / 2
+        $('.lightbox').css({
+            left: ($(window).width() - $('.lightbox').width()) / 2,
+            top: ($(window).height() - $('.lightbox').height()) / 2
         });
     });
 };
 
-$(function () {
-    $('.test a').lightbox();
+$(function () 
+{
+    $('.test a').lightbox0();
 });
+
