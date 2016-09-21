@@ -25,6 +25,7 @@ namespace WeldingExpert.Models
 
         [Required]
         [Display(Name = "出生年份")]
+        [Age(1900,2100)]
         public int BirthYear { get; set; }
 
         [Required]

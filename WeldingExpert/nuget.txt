@@ -1,0 +1,3 @@
+﻿Install-Package jquery.TypeScript.DefinitelyTyped
+Install-Package jquery.validation.TypeScript.DefinitelyTyped
+Install-Package jquery-validation-unobtrusive.TypeScript.DefinitelyTyped

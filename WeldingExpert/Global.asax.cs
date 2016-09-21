@@ -26,7 +26,7 @@ namespace WeldingExpert
             routes.MapRoute(
                 "Default", // 路由名称
                 "{controller}/{action}/{id}", // 带有参数的 URL
-                new { controller = "ParentMetal", action = "Index", id = UrlParameter.Optional } // 参数默认值
+                new { controller = "Welder", action = "Index", id = UrlParameter.Optional } // 参数默认值
             );
 
         }
