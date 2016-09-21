@@ -9,10 +9,10 @@ namespace WeldingExpert.Models
 {
     public enum UserRole
     {
-        Worker,
-        Engineer,
-        SeniorEngineer,
-        Admin
+        焊工,
+        工程师,
+        高级工程师,
+        管理员
     }
 
     public enum WelderLevel

@@ -1,4 +1,4 @@
-﻿/// <reference path="jquery-1.5.1.js" />
+﻿/// <reference path="jquery-1.8.2.js" />
 /// <reference path="jquery.validate.js" />
 /// <reference path="jquery.validate.unobtrusive.js" />
 
@@ -80,7 +80,7 @@ $(function () {
         $("li", this).each(function () {
             width += $(this).outerWidth();
         });
-        $(this).css("width", width + 10);
+        $(this).width(width + 10);
         subMenuWidthMap[$(this).attr("id")] = width;
         subMenuObjectMap[$(this).attr("id")] = $(this);
     });
@@ -119,44 +119,6 @@ $(function () {
 
         $("#submenu").show();
     });
-
-    /*
-    $("#menu_quality").mouseover(function (event) {
-    $("#submenu").empty();
-    $("#submenu").append("<li><a href="/Home/About">质量管理</a></li>");
-    });
-
-    $("#menu_setting").mouseover(function (event) {
-    $("#submenu").show();
-    $("#submenu").empty();
-    $("#submenu").append("<li><a href="/User/Index">用户管理</a></li>");
-    });
-
-    $("#menu_material").mouseover(function (event) {
-    $("#submenu").empty();
-    $("#submenu").append("<li><a href="/ParentMetal/Index">母材管理</a></li>");
-    $("#submenu").append("<li><a href="/WeldingMaterial/Index">焊材管理</a></li>");
-    });
-
-    $("#menu_task").mouseover(function (event) {
-    $("#submenu").empty();
-    $("#submenu").append("<li><a href="/User/Index">产品焊接工艺任务</a></li>");
-    });
-
-    $("#menu_welder").mouseover(function (event) {
-    $("#submenu").empty();
-    $("#submenu").append("<li><a href="/User/Index">焊工管理</a></li>");
-    });
-
-    $("#menu_tech").mouseover(function (event) {
-    $("#submenu").empty();
-    $("#submenu").append("<li><a href="/User/Index">焊接工艺技术</a></li>");
-    });
-
-    $("#menu_progress").mouseover(function (event) {
-    $("#submenu").empty();
-    $("#submenu").append("<li><a href="/User/Index">进度控制</a></li>");
-    });*/
 });
 
 function showbox() {
@@ -167,7 +129,7 @@ $(function () {
     $("body").append("<div id='box' style='display:none'><div id='boxbg'></div><div id='boxfg'><div id='boxcontent'></div><div id='boxclose'>关闭</div></div></div>");
     $("#boxclose").click(function () {
         $("#boxcontent").empty();
-        $("#box").css("display", "none");
+        $("#box").hide();
     });
 });
 

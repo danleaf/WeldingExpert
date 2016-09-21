@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("WeldingExpert")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("WeldingExpert")]
-[assembly: AssemblyCopyright("版权所有(C) Microsoft 2016")]
+[assembly: AssemblyCopyright("版权所有(C)  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("f830db2a-3448-4a0e-9359-15fce435f903")]
+[assembly: Guid("2be41dff-ea06-4b7d-b622-18bc8cb6dbf6")]
 
 // 程序集的版本信息由下列四个值组成:
 //
