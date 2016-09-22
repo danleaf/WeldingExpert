@@ -1,7 +1,6 @@
 /// <reference path="typings/jquery/jquery.d.ts" />
 /// <reference path="typings/jquery/jquery.validation.d.ts" />
 /// <reference path="typings/jquery/jquery.validation.unobtrusive.d.ts" />
-var _this = this;
 $.validator.unobtrusive.adapters.addBool("socialidvalidate");
 $.validator.addMethod("socialidvalidate", function (value, element, params) {
     var w = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2];
@@ -32,29 +31,30 @@ $.validator.addMethod("agevalidate", function (value, element, params) {
     return age >= min && age <= max;
 });
 $(function () {
-    $("#submenu").mouseleave(function (eevent) {
-        $(_this).hide();
+    $("#submenu").mouseleave(function (event) {
+        $("#submenu").hide();
     });
     $("#header").mouseleave(function (event) {
         $("#submenu").hide();
     });
-    var subMenuWidthMap = new Array();
-    var subMenuObjectMap = new Array();
-    $("#submenu ul").each(function () {
+    var subMenuWidthMap = new Object();
+    var subMenuObjectMap = new Object();
+    $("#submenu ul").each(function (index, elem) {
         var width = 0;
-        $("li", _this).each(function () {
-            width += $(_this).outerWidth();
+        $("li", elem).each(function (i, e) {
+            width += $(e).outerWidth();
         });
-        $(_this).width(width + 10);
-        subMenuWidthMap[$(_this).attr("id")] = width;
-        subMenuObjectMap[$(_this).attr("id")] = $(_this);
+        $(elem).width(width + 10);
+        subMenuWidthMap[$(elem).attr("id")] = width;
+        subMenuObjectMap[$(elem).attr("id")] = $(elem);
     });
     $("#submenu").hide();
     $("#mainmenu li").mouseover(function (event) {
         var menu;
         var width;
+        var sender = event.srcElement;
         for (var key in subMenuObjectMap) {
-            if ("show_" + key == $(_this).attr("id")) {
+            if ("show_" + key == $(sender).attr("id")) {
                 menu = subMenuObjectMap[key];
                 width = subMenuWidthMap[key];
             }
@@ -64,7 +64,7 @@ $(function () {
         }
         if (menu) {
             var totalWidth = $("#header").width();
-            var left = $(_this).position().left + $(_this).width() / 2 - width / 2;
+            var left = $(sender).position().left + $(sender).width() / 2 - width / 2;
             if (left + width > totalWidth) {
                 left -= left + width - totalWidth;
             }
@@ -87,4 +87,18 @@ $(function () {
         $("#box").hide();
     });
 });
+var Greeter = (function () {
+    function Greeter(message) {
+        this.greeting = message;
+    }
+    Greeter.prototype.greet = function () {
+        return "Hello, " + this.greeting;
+    };
+    Greeter.getInde = function () {
+        return 2;
+    };
+    return Greeter;
+}());
+Greeter.abc = 1;
+var greeter = new Greeter("world");
 //# sourceMappingURL=welding-expert.js.map

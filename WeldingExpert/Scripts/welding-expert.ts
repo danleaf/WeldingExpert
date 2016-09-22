@@ -38,26 +38,26 @@ $.validator.addMethod("agevalidate", (value:number, element, params) => {
     return age >= min && age <= max;
 });
 
-$(() => {
-    $("#submenu").mouseleave((eevent) => {
-        $(this).hide();
+$(function () {
+    $("#submenu").mouseleave((event) => {
+        $("#submenu").hide();
     });
 
     $("#header").mouseleave((event) => {
         $("#submenu").hide();
     });
 
-    var subMenuWidthMap = new Array();
-    var subMenuObjectMap = new Array();
+    var subMenuWidthMap = new Object();
+    var subMenuObjectMap = new Object();
 
-    $("#submenu ul").each(() => {
+    $("#submenu ul").each((index, elem) => {
         var width: number = 0;
-        $("li", this).each( () => {
-            width += $(this).outerWidth();
+        $("li", elem).each((i, e) => {
+            width += $(e).outerWidth();
         });
-        $(this).width(width + 10);
-        subMenuWidthMap[$(this).attr("id")] = width;
-        subMenuObjectMap[$(this).attr("id")] = $(this);
+        $(elem).width(width + 10);
+        subMenuWidthMap[$(elem).attr("id")] = width;
+        subMenuObjectMap[$(elem).attr("id")] = $(elem);
     });
 
 
@@ -66,9 +66,9 @@ $(() => {
     $("#mainmenu li").mouseover((event) => {
         var menu: JQuery;
         var width: number;
-
+        var sender = event.srcElement;
         for (var key in subMenuObjectMap) {
-            if ("show_" + key == $(this).attr("id")) {
+            if ("show_" + key == $(sender).attr("id")) {
                 menu = subMenuObjectMap[key];
                 width = subMenuWidthMap[key];
             }
@@ -79,7 +79,7 @@ $(() => {
 
         if (menu) {
             var totalWidth = $("#header").width();
-            var left = $(this).position().left + $(this).width() / 2 - width / 2;
+            var left = $(sender).position().left + $(sender).width() / 2 - width / 2;
 
             if (left + width > totalWidth) {
                 left -= left + width - totalWidth;
@@ -100,11 +100,30 @@ $(() => {
 function showbox() {
     $("#box").show();
 }
-
+ 
 $(function () {
     $("body").append("<div id='box' style='display:none'><div id='boxbg'></div><div id='boxfg'><div id='boxcontent'></div><div id='boxclose'>关闭</div></div></div>");
     $("#boxclose").click(function () {
         $("#boxcontent").empty();
         $("#box").hide();
-    });
+    }); 
 });
+class Greeter {
+    greeting: string;
+    static abc: number;
+    constructor(message: string) {
+        this.greeting = message;
+    }
+    greet() {
+        return "Hello, " + this.greeting;
+    }
+
+    static getInde() {
+        return 2;
+    }
+}
+
+Greeter.abc = 1;
+
+var greeter = new Greeter("world");
+
