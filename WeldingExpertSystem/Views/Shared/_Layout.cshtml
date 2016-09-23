@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div >
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" style="cursor:default">应用程序名称</a>
+            </div>
+                <div id="mainmenu" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav" style="cursor:pointer">
+                        <li><a id="show_taskmenu">产品焊接工艺任务</a></li>
+                        <li><a id="show_weldermenu">焊工管理</a></li>
+                        <li><a id="show_materialmenu">材料管理</a></li>
+                        <li><a id="show_techmenu">焊接工艺技术</a></li>
+                        <li><a id="show_progressmenu">进度控制</a></li>
+                        <li><a id="show_qualitymenu">焊接质量</a></li>
+                        <li><a id="show_settingmenu">系统设置</a></li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+        </div>
+    </div>
+    <div id="submenu">
+        <ul id="settingmenu" class="popmenu">
+            <li>@Html.ActionLink("用户管理", "Index", "User")</li>
+        </ul>
+        <ul id="materialmenu" class="popmenu">
+            <li>@Html.ActionLink("母材管理", "Index", "ParentMetal")</li>
+            <li>@Html.ActionLink("焊材管理", "Index", "WeldingMaterial")</li>
+        </ul>
+        <ul id="qualitymenu" class="popmenu">
+            <li>@Html.ActionLink("质量管理", "About", "Home")</li>
+        </ul>
+        <ul id="taskmenu" class="popmenu">
+            <li>@Html.ActionLink("产品焊接工艺任务", "About", "Home")</li>
+        </ul>
+    </div>
+    <div id="main" class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Test</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/weldingexpert")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

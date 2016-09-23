@@ -1,0 +1,184 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+
+}
+
+a
+{
+	text-decoration: none;
+}
+
+a:hover
+{
+	text-decoration: none;
+}
+
+.popmenu
+{
+    list-style: none;
+    position: absolute;
+    z-index: 10000;
+}
+
+img
+{
+	border:none;
+	vertical-align: middle;
+}
+
+ul#option
+{
+    list-style: none;
+}
+
+table
+{
+    border: 0px solid #065BC2;
+}
+
+th
+{
+    border: 0px solid #065BC2;
+}
+
+tr
+{
+    border: 0px solid #065BC2;
+}
+
+td
+{
+    border: 0px solid #065BC2;
+}
+
+#box
+{
+	width:100%;
+	height:100%;
+	position:absolute;
+	top:0;
+	left:0;
+}
+
+#boxbg
+{
+	width:100%;
+	height:100%;
+	background:#000;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:100000;
+	cursor: pointer;
+	opacity: 0.7;
+}
+
+#boxfg
+{
+	padding:10px;
+	padding-bottom:35px;
+	background:#fff;
+	position:absolute;
+	left: 95px; 
+	top: 35px; 
+	width: 800px; 
+	height: 550px;
+	overflow:hidden;
+	z-index:100001;
+}
+
+#boxcontent
+{
+	overflow:hidden;
+	width: 800px; 
+	height: 550px;
+}
+
+#boxclose
+{
+	margin-top:5px;
+	padding:5px;
+	text-align:right;
+	font-size:14px;
+	color:#555;
+	cursor:pointer;
+}
+
+.lightboxmask
+{
+	width:100%;
+	height:100%;
+	background:#000;
+	z-index:100000;
+	position:absolute;
+	top:0;
+	left:0;
+	cursor: pointer;
+}
+
+.lightbox
+{
+	padding:10px;
+	padding-bottom:35px;
+	background:#fff;
+	position:absolute;
+	top:100px;
+	left:100px;
+	overflow:hidden;
+	z-index:100001;
+}
+
+.lightboxcontainer
+{
+	overflow:hidden;
+}
+
+.lightboxclose
+{
+	margin-top:5px;
+	padding:5px;
+	text-align:right;
+	font-size:14px;
+	color:#555;
+	cursor:pointer;
+}
+
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}

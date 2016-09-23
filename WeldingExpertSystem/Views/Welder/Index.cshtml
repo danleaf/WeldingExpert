@@ -1,0 +1,48 @@
+﻿@model IEnumerable<WeldingExpertSystem.Models.Welder>
+@using WeldingExpertSystem.Models
+@using WeldingExpertSystem.Common;
+<h2>焊工管理</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            身份证号
+        </th>
+        <th>
+            姓名
+        </th>
+        <th>
+            年龄
+        </th>
+        <th>
+            级别
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SocialID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BirthYear)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Level.ToEnumClass<WelderLevel>().Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SocialID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SocialID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SocialID })
+        </td>
+    </tr>
+}
+
+</table>

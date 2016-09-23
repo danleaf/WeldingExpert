@@ -1,0 +1,46 @@
+﻿@model WeldingExpertSystem.Models.DeleteUserModel
+@using WeldingExpertSystem.Common;
+@using WeldingExpertSystem.Models
+@{
+    Layout = "~/Views/User/_Layout.cshtml";
+}
+
+<h3>确定要删除当前用户吗？</h3>
+
+<table>
+    <tr>
+        <th>
+            用户名
+        </th>
+        <th>
+            用户角色
+        </th>
+        <th>
+            真实姓名
+        </th>
+        <th>
+            工号
+        </th>
+    </tr>
+
+    <tr>
+      <td>
+          @Html.DisplayFor(item => item.UserName)
+      </td>
+      <td>
+          @Html.DisplayFor(item => item.Role.ToEnumClass<UserRole>().Name)
+      </td>
+      <td>
+          @Html.DisplayFor(item => item.RealName)
+      </td>
+      <td>
+          @Html.DisplayFor(item => item.WorkerID)
+      </td>
+  </tr>
+</table>
+@using (Html.BeginForm())
+{
+    <p>
+        <input type="submit" value="删除" />
+    </p>
+}
